@@ -2,12 +2,65 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
-
+    <title>Auto-Presser</title>
+    <link rel="stylesheet" href="/src/index.css">
   </head>
   <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
+    <div class="container">
+      <header>
+        <h1>🎮 Auto-Presser</h1>
+        <p>World of Warcraft Single-Button Rotation Tool</p>
+      </header>
+
+      <main class="config-panel">
+        <div class="input-group">
+          <label for="target-key">Target Key</label>
+          <input 
+            type="text" 
+            id="target-key" 
+            placeholder="e.g., Space, 1, A" 
+            maxlength="1"
+            class="key-input"
+          >
+          <small>The key to press automatically</small>
+        </div>
+
+        <div class="input-group">
+          <label for="frequency">Frequency (ms)</label>
+          <input 
+            type="number" 
+            id="frequency" 
+            placeholder="1000" 
+            min="100" 
+            max="10000"
+            class="frequency-input"
+          >
+          <small>Time between key presses in milliseconds</small>
+        </div>
+
+        <div class="input-group">
+          <label for="toggle-hotkey">Toggle Hotkey</label>
+          <input 
+            type="text" 
+            id="toggle-hotkey" 
+            placeholder="Cmd+Shift+A" 
+            readonly
+            class="hotkey-input"
+          >
+          <small>Click to record hotkey combination</small>
+        </div>
+
+        <div class="controls">
+          <button id="start-stop-btn" class="btn btn-primary" disabled>
+            Start Auto-Press
+          </button>
+          <div class="status">
+            <span id="status-text">Stopped</span>
+            <div id="status-indicator" class="status-dot stopped"></div>
+          </div>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/src/renderer.ts"></script>
   </body>
 </html>
